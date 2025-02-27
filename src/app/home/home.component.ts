@@ -1,27 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../services/api.service';
-import { ApiResponse, Character } from '../models/interfaces'
-
+import { ApiResponse, Character } from '../models/interfaces';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
-  data: Character[] = [];
+  displayedColumns: string[] = ['image', 'name', 'status', 'species', 'type', 'gender', 'created'];
+  dataSource = new MatTableDataSource<Character>(); 
 
-  constructor(private apiService: ApiService){}
+  @ViewChild(MatPaginator) paginator!: MatPaginator; 
+
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.getData()
+    this.getData();
   }
-  
+
   getData() {
     this.apiService.getData().subscribe((response: ApiResponse) => {
-      this.data = response.results;
-      console.log(this.data);
+      this.dataSource.data = response.results; 
+      this.dataSource.paginator = this.paginator; 
     });
   }
-  
 }
