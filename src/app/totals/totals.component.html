@@ -1,0 +1,27 @@
+<mat-card class="totals-card">
+    <mat-card-header>
+        <mat-card-title>Totales por especie</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="total-section">
+            <div *ngFor="let species of totalsBySpecies | keyvalue" class="total-item">
+                <span class="total-label">{{ species.key }}: </span>
+                <span class="total-value">{{ species.value }}</span>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="totals-card">
+    <mat-card-header>
+        <mat-card-title>Totales por tipo</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="total-section">
+            <div *ngFor="let type of totalsByType | keyvalue" class="total-item">
+                <span class="total-label">{{ type.key }}: </span>
+                <span class="total-value">{{ type.value }}</span>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

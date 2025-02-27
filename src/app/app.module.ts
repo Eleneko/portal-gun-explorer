@@ -13,12 +13,13 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-
-
+import { TotalsComponent } from './totals/totals.component';
+import { MatCardModule } from '@angular/material/card'; 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    TotalsComponent
   ],
   imports: [
     BrowserModule,
@@ -29,13 +30,12 @@ import { MatSelectModule } from '@angular/material/select';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-
+    MatCardModule,
     
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
     FormsModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]
