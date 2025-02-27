@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ApiResponse, Location, Episode, Character } from '../models/interfaces';
+import { ApiResponse, Location, Episode, Character, Origin } from '../models/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +21,10 @@ export class ApiService {
 
   getLocation(url: string): Observable<Location> {
     return this.http.get<Location>(url);
+  }
+
+  getOrigin(url: string): Observable<Origin> {
+    return this.http.get<Origin>(url);
   }
 
   getEpisode(url: string): Observable<Episode> {

@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ApiService } from '../services/api.service';
-import { Character, Episode, Location } from '../models/interfaces';
+import { Character, Episode, Location, Origin } from '../models/interfaces';
 
 @Component({
   selector: 'app-character-details',
@@ -9,11 +9,16 @@ import { Character, Episode, Location } from '../models/interfaces';
 })
 export class CharacterDetailsComponent implements OnChanges {
   @Input() character!: Character;
-  episode: Episode | null = null;
-  location: Location | null = null;
-  isLoading = true;
 
-  resident: Character | null = null;
+  origin: Origin | null = null;
+  originResident: Character | null = null; 
+
+  location: Location | null = null;
+  locationResident: Character | null = null;
+
+  episode: Episode | null = null;
+
+  isLoading = true;
 
   constructor(private apiService: ApiService) { }
 
@@ -25,16 +30,30 @@ export class CharacterDetailsComponent implements OnChanges {
 
   loadDetails() {
     this.isLoading = true;
+
+    this.origin = null;
+    this.originResident = null;
+
     this.location = null;
+    this.locationResident = null;
+
     this.episode = null;
 
-    this.resident = null;
+    if (this.character.origin.url) {
+      this.apiService.getOrigin(this.character.origin.url).subscribe((data: Origin) => {
+        this.origin = data;
+        if (data.residents && data.residents.length > 0) {
+          this.loadResident(data.residents[0], 'origin');
+        }
+        this.checkLoadingComplete();
+      });
+    }
 
     if (this.character.location.url) {
       this.apiService.getLocation(this.character.location.url).subscribe((data: Location) => {
         this.location = data;
         if (data.residents && data.residents.length > 0) {
-          this.loadResident(data.residents[0]);
+          this.loadResident(data.residents[0], 'location');
         }
         this.checkLoadingComplete();
       });
@@ -52,23 +71,31 @@ export class CharacterDetailsComponent implements OnChanges {
     }
   }
 
-  loadResident(residentUrl: string) {
+  loadResident(residentUrl: string, type: 'origin' | 'location') {
     if (residentUrl) {
       this.apiService.getCharacterByUrl(residentUrl).subscribe(
         (data: Character) => {
-          this.resident = data;
+          if (type === 'origin') {
+            this.originResident = data;
+          } else {
+            this.locationResident = data;
+          }
         },
-        (error) => {
-          console.error('Error al cargar el residente:', error);
-          this.resident = null; 
+        () => {
+          if (type === 'origin') {
+            this.originResident = null;
+          } else {
+            this.locationResident = null;
+          }
         }
       );
     }
   }
-  
+
   checkLoadingComplete() {
     if (
       (this.character.location.url ? this.location !== null : true) &&
+      (this.character.origin.url ? this.origin !== null : true) &&
       (this.character.episode.length > 0 ? this.episode !== null : true)
     ) {
       this.isLoading = false;

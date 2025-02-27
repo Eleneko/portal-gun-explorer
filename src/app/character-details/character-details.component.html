@@ -1,38 +1,59 @@
 <mat-card *ngIf="character" class="details-card">
     <mat-card-header>
-      <mat-card-title>{{ character.name }}</mat-card-title>
-      <mat-card-subtitle>{{ character.species }} - {{ character.status }}</mat-card-subtitle>
+        <mat-card-title>{{ character.name }}</mat-card-title>
+        <mat-card-subtitle>{{ character.species }} - {{ character.status }}</mat-card-subtitle>
     </mat-card-header>
-  
+
     <img mat-card-image [src]="character.image" [alt]="character.name">
-  
+
     <mat-card-content>
-      <!-- UBICACIÓN -->
-      <div class="detail-section">
-        <h3>Ubicación</h3>
-        <p><strong>Nombre:</strong> {{ location?.name || 'Desconocido' }}</p>
-        <p><strong>Tipo:</strong> {{ location?.type || 'Desconocido' }}</p>
-        <p><strong>Dimensión:</strong> {{ location?.dimension || 'Desconocido' }}</p>
-        <p *ngIf="resident">
-          <strong>Residente:</strong>
-          <a [routerLink]="['/character', resident.id]"> {{ resident.name }}</a>
-        </p>
-        <p *ngIf="!resident && location?.residents?.length === 0">No tiene residentes.</p>
-      </div>
-  
-      <!-- EPISODIO -->
-      <div class="detail-section">
-        <h3>Episodio</h3>
-        <p *ngIf="episode">
-          <strong>Nombre:</strong> {{ episode.name }}<br>
-          <strong>Episodio:</strong> {{ episode.episode }}<br>
-          <strong>Fecha de emisión:</strong> {{ episode.air_date }}
-        </p>
-        <p *ngIf="!episode">No tiene episodios.</p>
-      </div>
+
+        <!-- ORIGEN -->
+        <div class="detail-section">
+            <h2>Origen</h2>
+
+            <p><strong>Nombre:</strong> {{ origin?.name || 'Desconocido' }}<br>
+            <strong>Tipo:</strong> {{ origin?.type || 'Desconocido' }}<br>
+            <strong>Dimensión:</strong> {{ origin?.dimension || 'Desconocido' }}</p>
+            <!-- RESIDENTE -->
+            <p *ngIf="originResident">
+                <strong>Residentes: </strong>
+                <mat-chip> {{ originResident.name }}</mat-chip>
+            </p>
+            <p *ngIf="!originResident && origin?.residents?.length === 0">No hay residentes.</p>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <!-- LOCALIZACION -->
+        <div class="detail-section">
+            <h2>Localización</h2>
+
+            <p><strong>Nombre:</strong> {{ location?.name || 'Desconocido' }}<br>
+            <strong>Tipo:</strong> {{ location?.type || 'Desconocido' }}<br>
+            <strong>Dimensión:</strong> {{ location?.dimension || 'Desconocido' }}</p>
+            <!-- RESIDENTE -->
+            <p *ngIf="locationResident">
+                <strong>Residentes: </strong>
+                <mat-chip> {{ locationResident.name }}</mat-chip>
+            </p>
+            <p *ngIf="!locationResident && location?.residents?.length === 0">No hay residentes.</p>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <!-- EPISODIO -->
+        <div class="detail-section">
+            <h2>Episodio</h2>
+
+            <p *ngIf="episode">
+                <strong>Nombre: </strong>{{ episode.name }}<br>
+                <strong>Episodio: </strong>{{ episode.episode }}<br>
+                <strong>Fecha de emisión: </strong>{{ episode.air_date }}
+            </p>
+
+            <p *ngIf="!episode">No tiene episodios.</p>
+        </div>
+
     </mat-card-content>
-  </mat-card>
-  
-  <div *ngIf="isLoading" class="loading-spinner">
-    <mat-spinner></mat-spinner>
-  </div>
+</mat-card>

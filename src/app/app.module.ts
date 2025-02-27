@@ -17,6 +17,8 @@ import { TotalsComponent } from './totals/totals.component';
 import { MatCardModule } from '@angular/material/card';
 import { CharacterDetailsComponent } from './character-details/character-details.component'; 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatDividerModule} from '@angular/material/divider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,11 +32,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HttpClientModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule ,
+    MatDividerModule,
 
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
     MatCardModule,
+    MatChipsModule,
     
     MatFormFieldModule,
     MatInputModule,
