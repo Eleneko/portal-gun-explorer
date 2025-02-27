@@ -27,7 +27,6 @@
 
   <!-- TABLA -->
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
     <!-- IMAGEN -->
     <ng-container matColumnDef="image">
       <th mat-header-cell *matHeaderCellDef>Imagen</th>
@@ -80,8 +79,6 @@
   </table>
 
   <!-- Paginación -->
-  <mat-paginator
-    [pageSizeOptions]="[5, 10, 20]"
-    showFirstLastButtons
-  ></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+  </mat-paginator>
 </div>
