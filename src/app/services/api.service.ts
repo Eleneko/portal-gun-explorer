@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ApiResponse, Location, Episode } from '../models/interfaces';
+import { ApiResponse, Location, Episode, Character } from '../models/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +25,9 @@ export class ApiService {
 
   getEpisode(url: string): Observable<Episode> {
     return this.http.get<Episode>(url);
+  }
+
+  getCharacterByUrl(url: string): Observable<Character> {
+    return this.http.get<Character>(url);
   }
 }
