@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
   displayedColumns: string[] = ['image','name', 'status', 'species', 'type', 'gender', 'created'];
   dataSource = new MatTableDataSource<Character>();
 
+  selectedCharacter: Character | null = null;
+
   filters = {
     name: '',
     status: ''
@@ -42,5 +44,9 @@ export class HomeComponent implements OnInit {
 
   applyFilters() {
     this.getData();
+  }
+
+  selectCharacter(character: Character) {
+    this.selectedCharacter = character;
   }
 }
