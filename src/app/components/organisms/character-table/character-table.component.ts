@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, ViewChild, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { Character } from '../models/interfaces';
+import { Character } from 'src/app/models/interfaces';
 
 @Component({
   selector: 'app-character-table',

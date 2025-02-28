@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+// MATERIAL
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
-import { TotalsComponent } from './totals/totals.component';
 import { MatCardModule } from '@angular/material/card';
-import { CharacterDetailsComponent } from './character-details/character-details.component';
 import { MatChipsModule } from '@angular/material/chips';
-import { CharacterTableComponent } from './character-table/character-table.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatPaginatorModule } from '@angular/material/paginator';
+// COMPONENTS
+import { AppComponent } from './app.component';
+import { HomeComponent } from './components/pages/home/home.component';
+import { TotalsComponent } from './components/molecules/totals/totals.component';
+import { CharacterTableComponent } from './components/organisms/character-table/character-table.component';
+import { CharacterDetailsComponent } from './components/organisms/character-details/character-details.component';
 // DIRECTIVES
 import { KeyValueDirective } from './directives/key-value.directive';
 // PIPES

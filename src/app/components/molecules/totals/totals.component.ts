@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Character } from '../models/interfaces';
+import { Character } from 'src/app/models/interfaces';
 
 @Component({
   selector: 'app-totals',

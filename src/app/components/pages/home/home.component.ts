@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ApiService } from '../services/api.service';
-import { ApiResponse, Character } from '../models/interfaces';
+import { ApiService } from '../../../services/api.service';
+import { ApiResponse, Character } from '../../../models/interfaces';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 

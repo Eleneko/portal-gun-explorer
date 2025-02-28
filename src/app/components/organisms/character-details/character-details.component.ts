@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { ApiService } from '../services/api.service';
-import { Character, Episode, Location, Origin } from '../models/interfaces';
+import { Character, Episode, Origin, Location } from 'src/app/models/interfaces';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-character-details',
