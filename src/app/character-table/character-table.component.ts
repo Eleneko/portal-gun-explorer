@@ -9,12 +9,18 @@ import { Character } from '../models/interfaces';
   styleUrls: ['./character-table.component.css']
 })
 export class CharacterTableComponent implements OnInit {
-  @Input() characters: Character[] = [];
-  @Output() characterSelected = new EventEmitter<Character>();
-  displayedColumns: string[] = ['image', 'name', 'status', 'species', 'type', 'gender', 'created'];
-  dataSource = new MatTableDataSource<Character>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  @Input() characters: Character[] = [];
+  @Output() characterSelected = new EventEmitter<Character>();
+  @Output() favoriteSelected = new EventEmitter<Character>();
+
+  displayedColumns: string[] = ['favorite', 'image', 'name', 'status', 'species', 'type', 'gender', 'created'];
+
+  dataSource = new MatTableDataSource<Character>();
+
+  favoriteCharacter: Character | undefined = undefined;
 
   ngOnInit(): void {
     this.dataSource.data = this.characters;
@@ -28,4 +34,14 @@ export class CharacterTableComponent implements OnInit {
   selectCharacter(character: Character) {
     this.characterSelected.emit(character);
   }
+
+  markAsFavorite(character: Character) {
+    this.favoriteSelected.emit(character);
+  }
+
+  toggleFavorite(character: Character) {
+    this.favoriteCharacter = this.favoriteCharacter === character ? undefined : character;
+    this.favoriteSelected.emit(this.favoriteCharacter);
+  }
+  
 }

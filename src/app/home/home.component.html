@@ -1,4 +1,14 @@
 <div class="container">
+  
+  <!-- PERSONAJE FAVORITO -->
+  <div *ngIf="favoriteCharacter" class="favorite-character" (click)="selectCharacter(favoriteCharacter)">
+    <mat-card class="favorite-card">
+      <mat-card-content>
+        <span>⭐ {{ favoriteCharacter.name }}</span>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
   <!-- FILTROS -->
   <div class="filters">
     <mat-form-field appearance="outline">
@@ -26,14 +36,15 @@
   </div>
 
   <div class="main-content">
-    <!-- TABLA -->
+    <!-- TABLA PERSONAJES -->
     <app-character-table
       [characters]="dataSource.data"
       (characterSelected)="selectCharacter($event)"
+      (favoriteSelected)="setFavoriteCharacter($event)"
     >
     </app-character-table>
 
-    <!-- DETALLES PERSONAJE -->
+    <!-- DETALLE PERSONAJE -->
     <div class="details-container">
       <app-character-details
         *ngIf="selectedCharacter; else noCharacterSelected"
@@ -49,6 +60,6 @@
     </div>
   </div>
 
-  <!-- Totales -->
+  <!-- TOTALES ESPECIE & TIPO -->
   <app-totals [characters]="dataSource.data"></app-totals>
 </div>

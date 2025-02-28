@@ -11,11 +11,10 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class HomeComponent implements OnInit {
 
-  // Columnas
-  displayedColumns: string[] = ['image','name', 'status', 'species', 'type', 'gender', 'created'];
   dataSource = new MatTableDataSource<Character>();
 
   selectedCharacter: Character | null = null;
+  favoriteCharacter: Character | null = null;
 
   filters = {
     name: '',
@@ -24,7 +23,7 @@ export class HomeComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.getData();
@@ -48,5 +47,9 @@ export class HomeComponent implements OnInit {
 
   selectCharacter(character: Character) {
     this.selectedCharacter = character;
+  }
+
+  setFavoriteCharacter(character: Character) {
+    this.favoriteCharacter = character;
   }
 }

@@ -21,6 +21,8 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { CharacterTableComponent } from './character-table/character-table.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,12 +44,14 @@ import { CharacterTableComponent } from './character-table/character-table.compo
     MatSortModule,
     MatCardModule,
     MatChipsModule,
+    MatButtonModule,
     
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
     FormsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatIconModule
     
   ],
   providers: [],
