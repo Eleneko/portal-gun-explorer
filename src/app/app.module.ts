@@ -15,14 +15,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TotalsComponent } from './totals/totals.component';
 import { MatCardModule } from '@angular/material/card';
-import { CharacterDetailsComponent } from './character-details/character-details.component'; 
+import { CharacterDetailsComponent } from './character-details/character-details.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { CharacterTableComponent } from './character-table/character-table.component';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRippleModule } from '@angular/material/core';
+import { CdkTableModule } from '@angular/cdk/table';
+import {MatExpansionModule} from '@angular/material/expansion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,23 +39,25 @@ import {MatButtonModule} from '@angular/material/button';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatProgressSpinnerModule ,
+    MatProgressSpinnerModule,
     MatDividerModule,
-
+    CdkTableModule,
+    MatExpansionModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
     MatCardModule,
     MatChipsModule,
     MatButtonModule,
-    
+    MatRippleModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
     FormsModule,
     MatGridListModule,
-    MatIconModule
-    
+    MatIconModule,
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

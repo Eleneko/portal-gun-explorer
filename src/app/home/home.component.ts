@@ -41,15 +41,29 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  applyFilters() {
-    this.getData();
-  }
-
   selectCharacter(character: Character) {
     this.selectedCharacter = character;
   }
 
   setFavoriteCharacter(character: Character) {
     this.favoriteCharacter = character;
+  }
+
+  // #region FILTER 
+  applyFilters() {
+    this.getData();
+  }
+
+  clearFilters() {
+    this.filters = {
+      name: '',
+      status: ''
+    };
+    this.applyFilters();
+  }
+  //#endregion
+
+  clearSelectedCharacter() {
+    this.selectedCharacter = null; 
   }
 }

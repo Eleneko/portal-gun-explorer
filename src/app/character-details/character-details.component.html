@@ -1,59 +1,88 @@
 <mat-card *ngIf="character" class="details-card">
-    <mat-card-header>
-        <mat-card-title>{{ character.name }}</mat-card-title>
-        <mat-card-subtitle>{{ character.species }} - {{ character.status }}</mat-card-subtitle>
-    </mat-card-header>
+    
+  <button mat-icon-button class="close-button" (click)="clearCharacter()">
+    <mat-icon>close</mat-icon>
+  </button>
 
-    <img mat-card-image [src]="character.image" [alt]="character.name">
+  <mat-card-header>
+    <mat-card-title>{{ character.name }}</mat-card-title>
+    <mat-card-subtitle
+      >{{ character.species }} - {{ character.status }}</mat-card-subtitle
+    >
+  </mat-card-header>
 
-    <mat-card-content>
+  <img mat-card-image [src]="character.image" [alt]="character.name" />
+  <!-- LOCALIZACION -->
+  <mat-accordion>
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title> Localización </mat-panel-title>
+        <mat-panel-description>
+          {{ location?.name || "Desconocido" }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>
+        <strong>Tipo:</strong> {{ location?.type || "Desconocido" }}<br />
+        <strong>Dimensión:</strong> {{ location?.dimension || "Desconocido" }}
+      </p>
+      <!-- RESIDENTE -->
+      <p *ngIf="locationResident">
+        <strong>Residentes: </strong>
+        <mat-chip> {{ locationResident.name }}</mat-chip>
+      </p>
+      <p *ngIf="!locationResident && location?.residents?.length === 0">
+        No hay residentes.
+      </p>
+    </mat-expansion-panel>
+  </mat-accordion>
 
-        <!-- ORIGEN -->
-        <div class="detail-section">
-            <h2>Origen</h2>
+  <!-- ORIGEN -->
+  <mat-accordion>
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title> Origen </mat-panel-title>
+        <mat-panel-description>
+          {{ origin?.name || "Desconocido" }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>
+        <strong>Tipo:</strong> {{ origin?.type || "Desconocido" }}<br />
+        <strong>Dimensión:</strong> {{ origin?.dimension || "Desconocido" }}
+      </p>
+      <!-- RESIDENTE -->
+      <p *ngIf="originResident">
+        <strong>Residentes: </strong>
+        <mat-chip> {{ originResident.name }}</mat-chip>
+      </p>
+      <p *ngIf="!originResident && origin?.residents?.length === 0">
+        No hay residentes.
+      </p>
+    </mat-expansion-panel>
+  </mat-accordion>
 
-            <p><strong>Nombre:</strong> {{ origin?.name || 'Desconocido' }}<br>
-            <strong>Tipo:</strong> {{ origin?.type || 'Desconocido' }}<br>
-            <strong>Dimensión:</strong> {{ origin?.dimension || 'Desconocido' }}</p>
-            <!-- RESIDENTE -->
-            <p *ngIf="originResident">
-                <strong>Residentes: </strong>
-                <mat-chip> {{ originResident.name }}</mat-chip>
-            </p>
-            <p *ngIf="!originResident && origin?.residents?.length === 0">No hay residentes.</p>
-        </div>
-
-        <mat-divider></mat-divider>
-
-        <!-- LOCALIZACION -->
-        <div class="detail-section">
-            <h2>Localización</h2>
-
-            <p><strong>Nombre:</strong> {{ location?.name || 'Desconocido' }}<br>
-            <strong>Tipo:</strong> {{ location?.type || 'Desconocido' }}<br>
-            <strong>Dimensión:</strong> {{ location?.dimension || 'Desconocido' }}</p>
-            <!-- RESIDENTE -->
-            <p *ngIf="locationResident">
-                <strong>Residentes: </strong>
-                <mat-chip> {{ locationResident.name }}</mat-chip>
-            </p>
-            <p *ngIf="!locationResident && location?.residents?.length === 0">No hay residentes.</p>
-        </div>
-
-        <mat-divider></mat-divider>
-
-        <!-- EPISODIO -->
-        <div class="detail-section">
-            <h2>Episodio</h2>
-
-            <p *ngIf="episode">
-                <strong>Nombre: </strong>{{ episode.name }}<br>
-                <strong>Episodio: </strong>{{ episode.episode }}<br>
-                <strong>Fecha de emisión: </strong>{{ episode.air_date }}
-            </p>
-
-            <p *ngIf="!episode">No tiene episodios.</p>
-        </div>
-
-    </mat-card-content>
+  <!-- EPISODIO -->
+  <mat-accordion>
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title> Episodio </mat-panel-title>
+        <mat-panel-description>
+          {{ episode?.name || "Desconocido" }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p *ngIf="episode">
+        <strong>Episodio: </strong>{{ episode.episode }}<br />
+        <strong>Fecha de emisión: </strong>{{ episode.air_date }}
+      </p>
+      <p *ngIf="!episode">No tiene episodios.</p>
+    </mat-expansion-panel>
+  </mat-accordion>
 </mat-card>

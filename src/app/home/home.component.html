@@ -1,14 +1,17 @@
 <div class="container">
-  
   <!-- PERSONAJE FAVORITO -->
-  <div *ngIf="favoriteCharacter" class="favorite-character" (click)="selectCharacter(favoriteCharacter)">
+  <div
+    *ngIf="favoriteCharacter"
+    class="favorite-character"
+    (click)="selectCharacter(favoriteCharacter)"
+  >
     <mat-card class="favorite-card">
       <mat-card-content>
         <span>⭐ {{ favoriteCharacter.name }}</span>
       </mat-card-content>
     </mat-card>
   </div>
-  
+
   <!-- FILTROS -->
   <div class="filters">
     <mat-form-field appearance="outline">
@@ -33,22 +36,36 @@
         <mat-option value="unknown">Desconocido</mat-option>
       </mat-select>
     </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="clearFilters()"
+      class="filter-button"
+    >
+      Limpiar Filtros
+    </button>
   </div>
 
   <div class="main-content">
     <!-- TABLA PERSONAJES -->
-    <app-character-table
-      [characters]="dataSource.data"
-      (characterSelected)="selectCharacter($event)"
-      (favoriteSelected)="setFavoriteCharacter($event)"
-    >
-    </app-character-table>
+    <div class="table-container">
+      <app-character-table
+        [characters]="dataSource.data"
+        (characterSelected)="selectCharacter($event)"
+        (favoriteSelected)="setFavoriteCharacter($event)"
+      >
+      </app-character-table>
+      <!-- TOTALES ESPECIE & TIPO -->
+      <app-totals [characters]="dataSource.data"></app-totals>
+    </div>
 
     <!-- DETALLE PERSONAJE -->
     <div class="details-container">
       <app-character-details
         *ngIf="selectedCharacter; else noCharacterSelected"
         [character]="selectedCharacter"
+        (clearCharacterEvent)="clearSelectedCharacter()"
       ></app-character-details>
       <ng-template #noCharacterSelected>
         <mat-card class="no-selection-card">
@@ -59,7 +76,4 @@
       </ng-template>
     </div>
   </div>
-
-  <!-- TOTALES ESPECIE & TIPO -->
-  <app-totals [characters]="dataSource.data"></app-totals>
 </div>

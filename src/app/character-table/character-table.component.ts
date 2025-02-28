@@ -17,7 +17,6 @@ export class CharacterTableComponent implements OnInit {
   @Output() favoriteSelected = new EventEmitter<Character>();
 
   displayedColumns: string[] = ['favorite', 'image', 'name', 'status', 'species', 'type', 'gender', 'created'];
-
   dataSource = new MatTableDataSource<Character>();
 
   favoriteCharacter: Character | undefined = undefined;

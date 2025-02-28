@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Character, Episode, Location, Origin } from '../models/interfaces';
 
@@ -9,16 +9,16 @@ import { Character, Episode, Location, Origin } from '../models/interfaces';
 })
 export class CharacterDetailsComponent implements OnChanges {
   @Input() character!: Character;
+  @Output() clearCharacterEvent = new EventEmitter<void>();
+  
+  isLoading = true;
+  panelOpenState = false;
 
   origin: Origin | null = null;
   originResident: Character | null = null; 
-
   location: Location | null = null;
   locationResident: Character | null = null;
-
   episode: Episode | null = null;
-
-  isLoading = true;
 
   constructor(private apiService: ApiService) { }
 
@@ -33,10 +33,8 @@ export class CharacterDetailsComponent implements OnChanges {
 
     this.origin = null;
     this.originResident = null;
-
     this.location = null;
     this.locationResident = null;
-
     this.episode = null;
 
     if (this.character.origin.url) {
@@ -65,7 +63,6 @@ export class CharacterDetailsComponent implements OnChanges {
         this.checkLoadingComplete();
       });
     }
-
     else {
       this.checkLoadingComplete();
     }
@@ -100,5 +97,9 @@ export class CharacterDetailsComponent implements OnChanges {
     ) {
       this.isLoading = false;
     }
+  }
+
+  clearCharacter() {
+    this.clearCharacterEvent.emit(); 
   }
 }

@@ -1,6 +1,7 @@
 .card-container {
     display: flex;
     gap: 15px; 
+    padding-top: 15px;
   }
   
   mat-card {
