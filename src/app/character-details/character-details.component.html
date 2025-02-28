@@ -1,5 +1,5 @@
 <mat-card *ngIf="character" class="details-card">
-    
+
   <button mat-icon-button class="close-button" (click)="clearCharacter()">
     <mat-icon>close</mat-icon>
   </button>
@@ -12,33 +12,7 @@
   </mat-card-header>
 
   <img mat-card-image [src]="character.image" [alt]="character.name" />
-  <!-- LOCALIZACION -->
-  <mat-accordion>
-    <mat-expansion-panel
-      (opened)="panelOpenState = true"
-      (closed)="panelOpenState = false"
-    >
-      <mat-expansion-panel-header>
-        <mat-panel-title> Localización </mat-panel-title>
-        <mat-panel-description>
-          {{ location?.name || "Desconocido" }}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>
-        <strong>Tipo:</strong> {{ location?.type || "Desconocido" }}<br />
-        <strong>Dimensión:</strong> {{ location?.dimension || "Desconocido" }}
-      </p>
-      <!-- RESIDENTE -->
-      <p *ngIf="locationResident">
-        <strong>Residentes: </strong>
-        <mat-chip> {{ locationResident.name }}</mat-chip>
-      </p>
-      <p *ngIf="!locationResident && location?.residents?.length === 0">
-        No hay residentes.
-      </p>
-    </mat-expansion-panel>
-  </mat-accordion>
-
+  
   <!-- ORIGEN -->
   <mat-accordion>
     <mat-expansion-panel
@@ -61,6 +35,33 @@
         <mat-chip> {{ originResident.name }}</mat-chip>
       </p>
       <p *ngIf="!originResident && origin?.residents?.length === 0">
+        No hay residentes.
+      </p>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <!-- LOCALIZACION -->
+  <mat-accordion>
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title> Localización </mat-panel-title>
+        <mat-panel-description>
+          {{ location?.name || "Desconocido" }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>
+        <strong>Tipo:</strong> {{ location?.type || "Desconocido" }}<br />
+        <strong>Dimensión:</strong> {{ location?.dimension || "Desconocido" }}
+      </p>
+      <!-- RESIDENTE -->
+      <p *ngIf="locationResident">
+        <strong>Residentes: </strong>
+        <mat-chip> {{ locationResident.name }}</mat-chip>
+      </p>
+      <p *ngIf="!locationResident && location?.residents?.length === 0">
         No hay residentes.
       </p>
     </mat-expansion-panel>

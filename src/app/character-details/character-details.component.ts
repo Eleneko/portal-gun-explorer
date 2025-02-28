@@ -58,16 +58,24 @@ export class CharacterDetailsComponent implements OnChanges {
     }
 
     if (this.character.episode.length > 0) {
-      this.apiService.getEpisode(this.character.episode[0]).subscribe((data: Episode) => {
-        this.episode = data;
-        this.checkLoadingComplete();
-      });
-    }
-    else {
+      const randomIndex = Math.floor(Math.random() * this.character.episode.length);
+      const randomEpisodeUrl = this.character.episode[randomIndex];
+  
+      this.apiService.getEpisode(randomEpisodeUrl).subscribe(
+        (data: Episode) => {
+          this.episode = data;
+          this.checkLoadingComplete();
+        },
+        (error) => {
+          console.error('Error al cargar el episodio:', error);
+          this.checkLoadingComplete();
+        }
+      );
+    } else {
       this.checkLoadingComplete();
     }
   }
-
+  
   loadResident(residentUrl: string, type: 'origin' | 'location') {
     if (residentUrl) {
       this.apiService.getCharacterByUrl(residentUrl).subscribe(

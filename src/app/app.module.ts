@@ -5,59 +5,45 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
 import { FormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TotalsComponent } from './totals/totals.component';
 import { MatCardModule } from '@angular/material/card';
 import { CharacterDetailsComponent } from './character-details/character-details.component';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { CharacterTableComponent } from './character-table/character-table.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatRippleModule } from '@angular/material/core';
-import { CdkTableModule } from '@angular/cdk/table';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
+
+import { KeyValueDirective } from './directives/key-value.directive';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    TotalsComponent,
+    CharacterTableComponent,
     CharacterDetailsComponent,
-    CharacterTableComponent
+    TotalsComponent,
+    KeyValueDirective 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatProgressSpinnerModule,
-    MatDividerModule,
-    CdkTableModule,
     MatExpansionModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule,
     MatCardModule,
     MatChipsModule,
     MatButtonModule,
-    MatRippleModule,
-    MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
     FormsModule,
-    MatGridListModule,
     MatIconModule,
-
-
   ],
   providers: [],
   bootstrap: [AppComponent]

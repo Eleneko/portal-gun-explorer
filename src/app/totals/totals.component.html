@@ -1,26 +1,25 @@
 <div class="card-container">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Especies</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div *ngFor="let species of totalsBySpecies | keyvalue" class="total-item">
-          <span class="total-label">{{ species.key }}: </span>
-          <span class="total-value">{{ species.value }}</span>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Tipos</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div *ngFor="let type of totalsByType | keyvalue" class="total-item">
-          <span class="total-label">{{ type.key }}: </span>
-          <span class="total-value">{{ type.value }}</span>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Especies</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div *appKeyValue="totalsBySpecies; let item" class="total-item">
+        <span class="total-label">{{ item.key }}: </span>
+        <span class="total-value">{{ item.value }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Tipos</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div *appKeyValue="totalsByType; let item" class="total-item">
+        <span class="total-label">{{ item.key }}: </span>
+        <span class="total-value">{{ item.value }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
