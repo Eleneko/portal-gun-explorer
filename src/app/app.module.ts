@@ -19,6 +19,7 @@ import { CharacterDetailsComponent } from './character-details/character-details
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatGridListModule} from '@angular/material/grid-list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,9 @@ import {MatDividerModule} from '@angular/material/divider';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatGridListModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

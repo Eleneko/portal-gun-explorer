@@ -1,0 +1,9 @@
+.card-container {
+    display: flex;
+    gap: 15px; 
+  }
+  
+  mat-card {
+    flex: 1; 
+  }
+  
