@@ -18,8 +18,10 @@ import { CharacterTableComponent } from './character-table/character-table.compo
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
-
+// DIRECTIVES
 import { KeyValueDirective } from './directives/key-value.directive';
+// PIPES
+import { DateFormatPipe } from './pipes/date-format.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,8 @@ import { KeyValueDirective } from './directives/key-value.directive';
     CharacterTableComponent,
     CharacterDetailsComponent,
     TotalsComponent,
-    KeyValueDirective 
+    KeyValueDirective,
+    DateFormatPipe 
   ],
   imports: [
     BrowserModule,
