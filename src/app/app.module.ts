@@ -20,12 +20,14 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { CharacterTableComponent } from './character-table/character-table.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TotalsComponent,
-    CharacterDetailsComponent
+    CharacterDetailsComponent,
+    CharacterTableComponent
   ],
   imports: [
     BrowserModule,
