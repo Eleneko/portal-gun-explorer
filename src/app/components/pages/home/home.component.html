@@ -67,13 +67,11 @@
         [character]="selectedCharacter"
         (clearCharacterEvent)="clearSelectedCharacter()"
       ></app-character-details>
+
       <ng-template #noCharacterSelected>
-        <mat-card class="no-selection-card">
-          <mat-card-content>
-            <p>Seleccione un personaje para visualizar su información.</p>
-          </mat-card-content>
-        </mat-card>
+        <app-character-selection-empty></app-character-selection-empty>
       </ng-template>
+      
     </div>
   </div>
 </div>

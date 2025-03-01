@@ -31,15 +31,6 @@
   width: 400px;
 }
 
-.no-selection-card {
-  text-align: center;
-  justify-content: center; 
-  min-height: 100%;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-
 table {
   width: 100%;
 }
