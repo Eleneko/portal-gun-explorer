@@ -1,5 +1,4 @@
 <mat-card *ngIf="character" class="details-card">
-
   <button mat-icon-button class="close-button" (click)="clearCharacter()">
     <mat-icon>close</mat-icon>
   </button>
@@ -12,7 +11,7 @@
   </mat-card-header>
 
   <img mat-card-image [src]="character.image" [alt]="character.name" />
-  
+
   <!-- ORIGEN -->
   <mat-accordion>
     <mat-expansion-panel
@@ -29,12 +28,14 @@
         <strong>Tipo:</strong> {{ origin?.type || "Desconocido" }}<br />
         <strong>Dimensión:</strong> {{ origin?.dimension || "Desconocido" }}
       </p>
-      <!-- RESIDENTE -->
-      <p *ngIf="originResident">
-        <strong>Residentes: </strong>
-        <mat-chip> {{ originResident.name }}</mat-chip>
+      <!-- RESIDENTES -->
+      <p *ngIf="originResidents.length > 0">
+        <strong>Otros residentes: </strong>
+        <app-tag [items]="originResidentNames"></app-tag>
       </p>
-      <p *ngIf="!originResident && origin?.residents?.length === 0">
+      <p
+        *ngIf="originResidents.length === 0 && origin?.residents?.length === 0"
+      >
         No hay residentes.
       </p>
     </mat-expansion-panel>
@@ -56,12 +57,17 @@
         <strong>Tipo:</strong> {{ location?.type || "Desconocido" }}<br />
         <strong>Dimensión:</strong> {{ location?.dimension || "Desconocido" }}
       </p>
-      <!-- RESIDENTE -->
-      <p *ngIf="locationResident">
-        <strong>Residentes: </strong>
-        <mat-chip> {{ locationResident.name }}</mat-chip>
+      <!-- RESIDENTES -->
+      <p *ngIf="locationResidents.length > 0">
+        <strong>Otros residentes: </strong>
+        <app-tag [items]="locationResidentNames"></app-tag>
+
       </p>
-      <p *ngIf="!locationResident && location?.residents?.length === 0">
+      <p
+        *ngIf="
+          locationResidents.length === 0 && location?.residents?.length === 0
+        "
+      >
         No hay residentes.
       </p>
     </mat-expansion-panel>

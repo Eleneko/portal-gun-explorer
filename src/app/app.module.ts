@@ -24,6 +24,7 @@ import { CharacterDetailsComponent } from './components/organisms/character-deta
 import { KeyValueDirective } from './directives/key-value.directive';
 // PIPES
 import { DateFormatPipe } from './pipes/date-format.pipe';
+import { TagComponent } from './components/atoms/tag/tag.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
     CharacterDetailsComponent,
     TotalsComponent,
     KeyValueDirective,
-    DateFormatPipe 
+    DateFormatPipe,
+    TagComponent 
   ],
   imports: [
     BrowserModule,
