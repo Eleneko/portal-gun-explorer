@@ -1,13 +1,16 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges } from '@angular/core';
 import { Character, Episode, Origin, Location } from 'src/app/models/interfaces';
 import { ApiService } from 'src/app/services/api.service';
+import { CharacterDetailsService } from 'src/app/services/character-details.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-character-details',
   templateUrl: './character-details.component.html',
   styleUrls: ['./character-details.component.css']
 })
-export class CharacterDetailsComponent implements OnChanges {
+export class CharacterDetailsComponent implements OnChanges, OnDestroy {
   @Input() character!: Character;
   @Output() clearCharacterEvent = new EventEmitter<void>();
 
@@ -24,53 +27,51 @@ export class CharacterDetailsComponent implements OnChanges {
   originResidentNames: string[] = [];
   locationResidentNames: string[] = [];
 
-  constructor(private apiService: ApiService) { }
+  private destroy$ = new Subject<void>(); 
+
+  constructor(
+    private characterDetailsService: CharacterDetailsService,
+    private apiService: ApiService
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['character'] && this.character) {
       this.loadDetails();
     }
   }
-  
+
   loadDetails() {
     this.isLoading = true;
 
-    this.origin = null;
-    this.originResidents = [];
-    this.location = null;
-    this.locationResidents = [];
-    this.episode = null;
-
     if (this.character.origin.url) {
-      this.apiService.getOrigin(this.character.origin.url).subscribe((data: Origin) => {
-        this.origin = data;
-        if (data.residents && data.residents.length > 0) {
-          this.loadResidents(data.residents, 'origin');
-        }
+      this.characterDetailsService.loadOriginDetails(this.character.origin.url).pipe(
+        takeUntil(this.destroy$)
+      ).subscribe(({ origin, residents }) => {
+        this.origin = origin;
+        this.originResidents = residents;
         this.checkLoadingComplete();
       });
     }
 
     if (this.character.location.url) {
-      this.apiService.getLocation(this.character.location.url).subscribe((data: Location) => {
-        this.location = data;
-        if (data.residents && data.residents.length > 0) {
-          this.loadResidents(data.residents, 'location');
-        }
+      this.characterDetailsService.loadLocationDetails(this.character.location.url).pipe(
+        takeUntil(this.destroy$)
+      ).subscribe(({ location, residents }) => {
+        this.location = location;
+        this.locationResidents = residents;
         this.checkLoadingComplete();
       });
     }
 
     if (this.character.episode.length > 0) {
-      const randomIndex = Math.floor(Math.random() * this.character.episode.length);
-      const randomEpisodeUrl = this.character.episode[randomIndex];
-
-      this.apiService.getEpisode(randomEpisodeUrl).subscribe(
-        (data: Episode) => {
-          this.episode = data;
+      this.characterDetailsService.loadRandomEpisode(this.character.episode).pipe(
+        takeUntil(this.destroy$)
+      ).subscribe(
+        episode => {
+          this.episode = episode;
           this.checkLoadingComplete();
         },
-        (error) => {
+        error => {
           console.error('Error al cargar el episodio:', error);
           this.checkLoadingComplete();
         }
@@ -80,35 +81,9 @@ export class CharacterDetailsComponent implements OnChanges {
     }
   }
 
-  loadResidents(residentsUrls: string[], type: 'origin' | 'location') {
-    if (residentsUrls.length === 0) return;
-  
-    const shuffled = residentsUrls.sort(() => 0.5 - Math.random()).slice(0, 5);
-    const requests = shuffled.map(url => this.apiService.getCharacterByUrl(url));
-  
-    Promise.allSettled(requests.map(req => req.toPromise()))
-      .then((results) => {
-        const validCharacters = results
-          .filter(result => result.status === 'fulfilled')
-          .map(result => (result as PromiseFulfilledResult<Character>).value);
-  
-        if (type === 'origin') {
-          this.originResidents = validCharacters.slice(0, 5);
-          this.originResidentNames = this.originResidents.map(resident => resident.name);
-        } else {
-          this.locationResidents = validCharacters.slice(0, 5);
-          this.locationResidentNames = this.locationResidents.map(resident => resident.name);
-        }
-      })
-      .catch(() => {
-        if (type === 'origin') {
-          this.originResidents = [];
-          this.originResidentNames = [];
-        } else {
-          this.locationResidents = [];
-          this.locationResidentNames = [];
-        }
-      });
+  ngOnDestroy() {
+    this.destroy$.next(); 
+    this.destroy$.complete(); 
   }
 
   checkLoadingComplete() {
@@ -124,6 +99,4 @@ export class CharacterDetailsComponent implements OnChanges {
   clearCharacter() {
     this.clearCharacterEvent.emit();
   }
-
-  
 }
