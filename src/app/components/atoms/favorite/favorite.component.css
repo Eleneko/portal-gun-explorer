@@ -1,0 +1,43 @@
+.favorite-card {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  border: 3px solid #5baeb6;
+  border-radius: 0.5em;
+  background: #1c4549;
+  color: white;
+  text-align: center;
+  box-shadow: 0 0 15px #5baeb6;
+  margin-bottom: 25px;
+}
+
+.favorite-content {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.character-info {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+}
+
+.favorite-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; 
+}
+
+.favorite-name {
+  font-size: 2em;
+  font-family: 'Get Schwifty';
+}
+
+
+@font-face {
+  font-family: 'Get Schwifty';
+  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3089507/get-schwifty.woff') format('woff');
+}

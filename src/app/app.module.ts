@@ -26,6 +26,7 @@ import { KeyValueDirective } from './directives/key-value.directive';
 import { DateFormatPipe } from './pipes/date-format.pipe';
 import { TagComponent } from './components/atoms/tag/tag.component';
 import { CharacterSelectionEmptyComponent } from './components/organisms/character-selection-empty/character-selection-empty.component';
+import { FavoriteComponent } from './components/atoms/favorite/favorite.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { CharacterSelectionEmptyComponent } from './components/organisms/charact
     KeyValueDirective,
     DateFormatPipe,
     TagComponent,
-    CharacterSelectionEmptyComponent 
+    CharacterSelectionEmptyComponent,
+    FavoriteComponent 
   ],
   imports: [
     BrowserModule,

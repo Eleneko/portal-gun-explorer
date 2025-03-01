@@ -1,16 +1,9 @@
 <div class="container">
   <!-- PERSONAJE FAVORITO -->
-  <div
-    *ngIf="favoriteCharacter"
-    class="favorite-character"
-    (click)="selectCharacter(favoriteCharacter)"
-  >
-    <mat-card class="favorite-card">
-      <mat-card-content>
-        <span>⭐ {{ favoriteCharacter.name }}</span>
-      </mat-card-content>
-    </mat-card>
-  </div>
+  <app-favorite
+    [favoriteCharacter]="favoriteCharacter"
+    (characterSelected)="selectCharacter($event)"
+  ></app-favorite>
 
   <!-- FILTROS -->
   <div class="filters">
@@ -71,7 +64,6 @@
       <ng-template #noCharacterSelected>
         <app-character-selection-empty></app-character-selection-empty>
       </ng-template>
-      
     </div>
   </div>
 </div>

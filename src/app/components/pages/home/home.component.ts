@@ -7,10 +7,9 @@ import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
   dataSource = new MatTableDataSource<Character>();
 
   selectedCharacter: Character | null = null;
@@ -32,7 +31,7 @@ export class HomeComponent implements OnInit {
   getData() {
     const params = {
       name: this.filters.name,
-      status: this.filters.status
+      status: this.filters.status,
     };
 
     this.apiService.getData(params).subscribe((response: ApiResponse) => {
@@ -49,7 +48,6 @@ export class HomeComponent implements OnInit {
     this.favoriteCharacter = character;
   }
 
-  // #region FILTER 
   applyFilters() {
     this.getData();
   }
@@ -57,13 +55,12 @@ export class HomeComponent implements OnInit {
   clearFilters() {
     this.filters = {
       name: '',
-      status: ''
+      status: '',
     };
     this.applyFilters();
   }
-  //#endregion
 
   clearSelectedCharacter() {
-    this.selectedCharacter = null; 
+    this.selectedCharacter = null;
   }
 }

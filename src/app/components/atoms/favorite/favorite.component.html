@@ -1,0 +1,19 @@
+<div
+  *ngIf="favoriteCharacter"
+  class="favorite-character"
+  (click)="selectCharacter()"
+>
+  <mat-card class="favorite-card">
+    <mat-card-content class="favorite-content">
+      <span class="favorite-icon">⭐</span>
+      <div class="character-info">
+        <img
+          [src]="favoriteCharacter.image"
+          alt="{{ favoriteCharacter.name }}"
+          class="favorite-image"
+        />
+        <span class="favorite-name">{{ favoriteCharacter.name }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
