@@ -27,6 +27,8 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
 import { TagComponent } from './components/atoms/tag/tag.component';
 import { CharacterSelectionEmptyComponent } from './components/organisms/character-selection-empty/character-selection-empty.component';
 import { FavoriteComponent } from './components/atoms/favorite/favorite.component';
+import { ModalComponent } from './components/atoms/modal/modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,8 @@ import { FavoriteComponent } from './components/atoms/favorite/favorite.componen
     DateFormatPipe,
     TagComponent,
     CharacterSelectionEmptyComponent,
-    FavoriteComponent 
+    FavoriteComponent,
+    ModalComponent 
   ],
   imports: [
     BrowserModule,
@@ -55,6 +58,7 @@ import { FavoriteComponent } from './components/atoms/favorite/favorite.componen
     MatSelectModule,
     FormsModule,
     MatIconModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

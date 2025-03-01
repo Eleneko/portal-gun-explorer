@@ -3,6 +3,8 @@ import { ApiService } from '../../../services/api.service';
 import { ApiResponse, Character } from '../../../models/interfaces';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../../atoms/modal/modal.component';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +13,9 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class HomeComponent implements OnInit {
   dataSource = new MatTableDataSource<Character>();
-
   selectedCharacter: Character | null = null;
   favoriteCharacter: Character | null = null;
+  characterModal: Character | null = null;
 
   filters = {
     name: '',
@@ -22,7 +24,7 @@ export class HomeComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getData();
@@ -42,6 +44,13 @@ export class HomeComponent implements OnInit {
 
   selectCharacter(character: Character) {
     this.selectedCharacter = character;
+  }
+
+  openModal(character: Character) {
+    this.characterModal = character;
+    this.dialog.open(ModalComponent, {
+      data: this.characterModal
+    });
   }
 
   setFavoriteCharacter(character: Character) {

@@ -2,7 +2,7 @@
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- MARCAR FAVORITO -->
     <ng-container matColumnDef="favorite">
-      <th mat-header-cell *matHeaderCellDef>Favorito</th>
+      <th mat-header-cell *matHeaderCellDef>Favorite</th>
       <td mat-cell *matCellDef="let item">
         <button mat-icon-button (click)="toggleFavorite(item)">
           <mat-icon
@@ -19,7 +19,7 @@
 
     <!-- IMAGEN -->
     <ng-container matColumnDef="image">
-      <th mat-header-cell *matHeaderCellDef>Imagen</th>
+      <th mat-header-cell *matHeaderCellDef>Image</th>
       <td mat-cell *matCellDef="let row">
         <img [src]="row.image" alt="{{ row.name }}" width="50" height="50" />
       </td>
@@ -27,37 +27,37 @@
 
     <!-- NOMBRE -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <th mat-header-cell *matHeaderCellDef>Name</th>
       <td mat-cell *matCellDef="let row">{{ row.name }}</td>
     </ng-container>
 
     <!-- ESTADO -->
     <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef>Estado</th>
+      <th mat-header-cell *matHeaderCellDef>Status</th>
       <td mat-cell *matCellDef="let row">{{ row.status }}</td>
     </ng-container>
 
     <!-- ESPECIE -->
     <ng-container matColumnDef="species">
-      <th mat-header-cell *matHeaderCellDef>Especie</th>
+      <th mat-header-cell *matHeaderCellDef>Specie</th>
       <td mat-cell *matCellDef="let row">{{ row.species }}</td>
     </ng-container>
 
     <!-- TIPO -->
     <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef>Tipo</th>
+      <th mat-header-cell *matHeaderCellDef>Type</th>
       <td mat-cell *matCellDef="let row">{{ row.type || "N/A" }}</td>
     </ng-container>
 
     <!-- GÉNERO -->
     <ng-container matColumnDef="gender">
-      <th mat-header-cell *matHeaderCellDef>Género</th>
+      <th mat-header-cell *matHeaderCellDef>Gender</th>
       <td mat-cell *matCellDef="let row">{{ row.gender }}</td>
     </ng-container>
 
     <!-- FECHA DE CREACIÓN -->
     <ng-container matColumnDef="created">
-      <th mat-header-cell *matHeaderCellDef>Creado</th>
+      <th mat-header-cell *matHeaderCellDef>Created</th>
       <td mat-cell *matCellDef="let row">
         {{ row.created | dateFormat }}
       </td>

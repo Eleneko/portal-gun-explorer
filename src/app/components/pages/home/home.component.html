@@ -2,13 +2,15 @@
   <!-- PERSONAJE FAVORITO -->
   <app-favorite
     [favoriteCharacter]="favoriteCharacter"
-    (characterSelected)="selectCharacter($event)"
-  ></app-favorite>
+    (characterSelected)="openModal($event)"
+  >
+  </app-favorite>
+  <app-modal *ngIf="characterModal"></app-modal>
 
   <!-- FILTROS -->
   <div class="filters">
     <mat-form-field appearance="outline">
-      <mat-label>Buscar por nombre</mat-label>
+      <mat-label>Search by name</mat-label>
       <input
         matInput
         [(ngModel)]="filters.name"
@@ -18,15 +20,15 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Filtrar por estado</mat-label>
+      <mat-label>Search by status</mat-label>
       <mat-select
         [(ngModel)]="filters.status"
         (selectionChange)="applyFilters()"
       >
-        <mat-option value="">Todos</mat-option>
-        <mat-option value="Alive">Vivo</mat-option>
-        <mat-option value="Dead">Muerto</mat-option>
-        <mat-option value="unknown">Desconocido</mat-option>
+        <mat-option value="">All</mat-option>
+        <mat-option value="Alive">Alive</mat-option>
+        <mat-option value="Dead">Dead</mat-option>
+        <mat-option value="unknown">Unknown</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -36,7 +38,7 @@
       (click)="clearFilters()"
       class="filter-button"
     >
-      Limpiar Filtros
+      Clear Filters
     </button>
   </div>
 

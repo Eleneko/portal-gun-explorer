@@ -1,0 +1,17 @@
+<div class="modal-container">
+  <h1 class="modal-title">{{ modalCharacter?.name }}</h1>
+  <img
+    mat-card-image
+    [src]="modalCharacter?.image"
+    [alt]="modalCharacter?.name"
+  />
+  <p>
+    Status: {{ modalCharacter?.status }}<br />
+    Gender: {{ modalCharacter?.gender }}<br />
+    Species: {{ modalCharacter?.species }}
+  </p>
+
+  <button mat-icon-button class="close-button" (click)="closeModal()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

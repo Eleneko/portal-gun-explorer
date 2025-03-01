@@ -1,0 +1,36 @@
+.modal-container {
+  padding: 24px 100px;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  h1 {
+    font-family: "Get Schwifty";
+    text-align: center;
+  }
+}
+
+mat-dialog-content {
+  padding: 24px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+mat-dialog-actions {
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 1;
+  border-radius: 50%;
+}
+
+@font-face {
+  font-family: "Get Schwifty";
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/3089507/get-schwifty.woff")
+    format("woff");
+}

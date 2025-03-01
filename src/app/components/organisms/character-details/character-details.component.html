@@ -19,24 +19,24 @@
       (closed)="panelOpenState = false"
     >
       <mat-expansion-panel-header>
-        <mat-panel-title> Origen </mat-panel-title>
+        <mat-panel-title> Origin </mat-panel-title>
         <mat-panel-description>
-          {{ origin?.name || "Desconocido" }}
+          {{ origin?.name || "Unknown" }}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <p>
-        <strong>Tipo:</strong> {{ origin?.type || "Desconocido" }}<br />
-        <strong>Dimensión:</strong> {{ origin?.dimension || "Desconocido" }}
+        <strong>Tipo:</strong> {{ origin?.type || "Unknown" }}<br />
+        <strong>Dimensión:</strong> {{ origin?.dimension || "Unknown" }}
       </p>
       <!-- RESIDENTES -->
       <p *ngIf="originResidents.length > 0">
-        <strong>Otros residentes: </strong>
+        <strong>Residents: </strong>
         <app-tag [items]="originResidentNames"></app-tag>
       </p>
       <p
         *ngIf="originResidents.length === 0 && origin?.residents?.length === 0"
       >
-        No hay residentes.
+        There are no residents.
       </p>
     </mat-expansion-panel>
   </mat-accordion>
@@ -50,26 +50,25 @@
       <mat-expansion-panel-header>
         <mat-panel-title> Localización </mat-panel-title>
         <mat-panel-description>
-          {{ location?.name || "Desconocido" }}
+          {{ location?.name || "Unknown" }}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <p>
-        <strong>Tipo:</strong> {{ location?.type || "Desconocido" }}<br />
-        <strong>Dimensión:</strong> {{ location?.dimension || "Desconocido" }}
+        <strong>Tipo:</strong> {{ location?.type || "Unknown" }}<br />
+        <strong>Dimensión:</strong> {{ location?.dimension || "Unknown" }}
       </p>
       <!-- RESIDENTES -->
       <p *ngIf="locationResidents.length > 0">
-        <strong>Otros residentes: </strong>
+        <strong>Residents: </strong>
         <app-tag [items]="locationResidentNames"></app-tag>
-
       </p>
       <p
         *ngIf="
           locationResidents.length === 0 && location?.residents?.length === 0
         "
       >
-        No hay residentes.
-      </p>
+      There are no residents.
+    </p>
     </mat-expansion-panel>
   </mat-accordion>
 
@@ -80,16 +79,16 @@
       (closed)="panelOpenState = false"
     >
       <mat-expansion-panel-header>
-        <mat-panel-title> Episodio </mat-panel-title>
+        <mat-panel-title> Episode </mat-panel-title>
         <mat-panel-description>
-          {{ episode?.name || "Desconocido" }}
+          {{ episode?.name || "Unknown" }}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <p *ngIf="episode">
-        <strong>Episodio: </strong>{{ episode.episode }}<br />
-        <strong>Fecha de emisión: </strong>{{ episode.air_date }}
+        <strong>Episode: </strong>{{ episode.episode }}<br />
+        <strong>Air date: </strong>{{ episode.air_date }}
       </p>
-      <p *ngIf="!episode">No tiene episodios.</p>
+      <p *ngIf="!episode">No episodes.</p>
     </mat-expansion-panel>
   </mat-accordion>
 </mat-card>
