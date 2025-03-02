@@ -1,27 +1,84 @@
-# PortalGunExplorer
+# Portal Gun Explorer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+Portal Gun Explorer es una aplicación desarrollada en Angular que permite explorar los personajes del universo de Rick and Morty a través de la API oficial. Los usuarios pueden buscar personajes, filtrarlos por estado y obtener detalles adicionales sobre su origen, ubicación y episodios en los que aparecen, así como también marcar un personaje favorito.
 
-## Development server
+## Tecnologías Utilizadas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Angular 16**: Framework principal para el desarrollo de la aplicación.
+- **Angular Material**: Biblioteca de componentes para mejorar la UI/UX.
+- **RxJS**: Manejo de programación reactiva y peticiones asincrónicas.
+- **TypeScript**: Lenguaje de programación utilizado.
+- **SCSS/CSS**: Estilos de la aplicación.
+- **API de Rick and Morty**: Fuente de datos para los personajes.
 
-## Code scaffolding
+## Instalación y Configuración
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Prerrequisitos
 
-## Build
+- Node.js (versión recomendada: 16 o superior)
+- Angular CLI
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Instalación
 
-## Running unit tests
+1. Clona el repositorio:
+   ```sh
+   git clone https://github.com/tu_usuario/portal-gun-explorer.git
+   cd portal-gun-explorer
+   ```
+2. Instala las dependencias:
+   ```sh
+   npm i
+   ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Ejecución
 
-## Running end-to-end tests
+Para iniciar la aplicación en modo de desarrollo, ejecuta:
+```sh
+ng serve
+```
+Esto iniciará un servidor en `http://localhost:4200/`.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Estructura del Proyecto
 
-## Further help
+```
+portal-gun-explorer/
+│-- src/
+│   │-- app/
+│   │   │-- components/ (Componentes reutilizables)
+│   │   │-- pages/ (Páginas principales)
+│   │   │-- services/ (Servicios para peticiones a la API)
+│   │   │-- models/ (Interfaces y tipos)
+│   │   │-- pipes/ (Pipes personalizados)
+│   │   │-- directives/ (Directivas personalizadas)
+│   │-- assets/ (Recursos estáticos como imágenes)
+│   │-- styles/ (Estilos globales)
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Funcionalidades
+
+- **Búsqueda de personajes** Por nombre.
+- **Filtrado por estado** 
+- **Detalle de personajes**, incluyendo origen, ubicación y episodios en los que aparecen.
+- **Marcado de personaje favorito**.
+- **Paginación** de resultados.
+- **Modal de detalles** con información ampliada.
+
+## Servicios Principales
+
+### `ApiService`
+Maneja todas las peticiones HTTP a la API de Rick and Morty.
+- `getData(filters: any): Observable<ApiResponse>`: Obtiene personajes según filtros.
+- `getLocation(url: string): Observable<Location>`: Obtiene detalles de una ubicación.
+- `getOrigin(url: string): Observable<Origin>`: Obtiene detalles del origen de un personaje.
+- `getEpisode(url: string): Observable<Episode>`: Obtiene detalles de un episodio.
+
+### `CharacterDetailsService`
+Maneja la carga de detalles adicionales de personajes, incluyendo origen, ubicación y episodios.
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT.
+
+
+### Gracias por leer!.
+
